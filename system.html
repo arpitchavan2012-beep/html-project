@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book Recommendations</title>
+    <style>
+      :root{
+        --bg:#f7f9fc; --card:#ffffff; --accent:#2b7a78; --muted:#6b7280;
+      }
+      body{font-family:Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:#111; margin:24px}
+      .container{max-width:1000px;margin:0 auto}
+      h1{color:var(--accent);margin-bottom:8px}
+      p.lead{color:var(--muted);margin-top:0;margin-bottom:16px}
+      .card{background:var(--card);border-radius:8px;padding:16px;box-shadow:0 4px 12px rgba(15,23,42,0.06)}
+      .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+      .controls input[type="search"]{flex:1;padding:8px 10px;border:1px solid #e6e9ef;border-radius:6px}
+      table{width:100%;border-collapse:collapse;margin-top:8px}
+      thead th{background:#f1f5f9;text-align:left;padding:10px;border-bottom:1px solid #e6e9ef;font-size:14px}
+      tbody td{padding:10px;border-bottom:1px solid #f1f5f9;font-size:14px;vertical-align:top}
+      tbody tr:hover{background:linear-gradient(90deg, rgba(139,195,235,0.06), rgba(255,255,255,0.02))}
+      .genre{display:inline-block;padding:4px 8px;border-radius:999px;background:#eef2ff;color:#3730a3;font-size:12px}
+      .rating{color:#d97706;font-weight:600}
+      a.link{color:var(--accent);text-decoration:none}
+      @media (max-width:760px){
+        thead{display:none}
+        table, tbody, tr, td{display:block;width:100%}
+        tr{margin-bottom:12px}
+        td{border-bottom:0;padding:8px}
+        td:before{content:attr(data-label);display:block;font-weight:600;color:var(--muted);margin-bottom:4px}
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Book Recommendations</h1>
+      <p class="lead">A compact list of recommended reads across genres — click a title to learn more.</p>
+
+      <div class="card">
+        <div class="controls">
+          <input id="search" type="search" placeholder="Filter by title, author, genre..." aria-label="Search books">
+        </div>
+
+        <table id="book-recs" aria-label="Book recommendations">
+          <thead>
+            <tr>
+              <th style="width:36px">#</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Genre</th>
+              <th style="width:72px">Year</th>
+              <th style="width:72px">Rating</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="#">1</td>
+              <td data-label="Title"><a class="link" href="https://www.example.com/1984" target="_blank" rel="noopener">1984</a></td>
+              <td data-label="Author">George Orwell</td>
+              <td data-label="Genre"><span class="genre">Dystopia</span></td>
+              <td data-label="Year">1949</td>
+              <td data-label="Rating"><span class="rating">4.7</span></td>
+              <td data-label="Notes">Chilling political dystopia with enduring relevance.</td>
+            </tr>
+            <tr>
+              <td data-label="#">2</td>
+              <td data-label="Title"><a class="link" href="https://www.example.com/to-kill-a-mockingbird" target="_blank" rel="noopener">To Kill a Mockingbird</a></td>
+              <td data-label="Author">Harper Lee</td>
+              <td data-label="Genre"><span class="genre">Classic</span></td>
+              <td data-label="Year">1960</td>
+              <td data-label="Rating"><span class="rating">4.8</span></td>
+              <td data-label="Notes">Compassionate courtroom drama about justice and childhood.</td>
+            </tr>
+            <tr>
+              <td data-label="#">3</td>
+              <td data-label="Title"><a class="link" href="https://www.example.com/clean-code" target="_blank" rel="noopener">Clean Code</a></td>
+              <td data-label="Author">Robert C. Martin</td>
+              <td data-label="Genre"><span class="genre">Programming</span></td>
+              <td data-label="Year">2008</td>
+              <td data-label="Rating"><span class="rating">4.6</span></td>
+              <td data-label="Notes">Practices and principles for writing maintainable code.</td>
+            </tr>
+            <tr>
+              <td data-label="#">4</td>
+              <td data-label="Title"><a class="link" href="https://www.example.com/sapiens" target="_blank" rel="noopener">Sapiens</a></td>
+              <td data-label="Author">Yuval Noah Harari</td>
+              <td data-label="Genre"><span class="genre">Non-fiction</span></td>
+              <td data-label="Year">2011</td>
+              <td data-label="Rating"><span class="rating">4.5</span></td>
+              <td data-label="Notes">Ambitious history of humankind with broad insights.</td>
+            </tr>
+            <tr>
+              <td data-label="#">5</td>
+              <td data-label="Title"><a class="link" href="https://www.example.com/the-alchemist" target="_blank" rel="noopener">The Alchemist</a></td>
+              <td data-label="Author">Paulo Coelho</td>
+              <td data-label="Genre"><span class="genre">Fiction</span></td>
+              <td data-label="Year">1988</td>
+              <td data-label="Rating"><span class="rating">4.2</span></td>
+              <td data-label="Notes">Short, inspiring fable about following your dreams.</td>
+            </tr>
+            <tr>
+              <td data-label="#">6</td>
+              <td data-label="Title"><a class="link" href="https://www.example.com/the-pragmatic-programmer" target="_blank" rel="noopener">The Pragmatic Programmer</a></td>
+              <td data-label="Author">Andy Hunt & Dave Thomas</td>
+              <td data-label="Genre"><span class="genre">Programming</span></td>
+              <td data-label="Year">1999</td>
+              <td data-label="Rating"><span class="rating">4.7</span></td>
+              <td data-label="Notes">Timeless advice for practical software craftsmanship.</td>
+            </tr>
+            <tr>
+              <td data-label="#">7</td>
+              <td data-label="Title"><a class="link" href="https://www.example.com/atomic-habits" target="_blank" rel="noopener">Atomic Habits</a></td>
+              <td data-label="Author">James Clear</td>
+              <td data-label="Genre"><span class="genre">Self-help</span></td>
+              <td data-label="Year">2018</td>
+              <td data-label="Rating"><span class="rating">4.6</span></td>
+              <td data-label="Notes">Practical systems for building better routines.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      // Simple client-side filter
+      const search = document.getElementById('search');
+      const tbody = document.querySelector('#book-recs tbody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+
+      function normalize(s){return (s||'').toString().toLowerCase();}
+
+      search.addEventListener('input', ()=>{
+        const q = normalize(search.value);
+        rows.forEach(r=>{
+          const text = normalize(r.textContent);
+          r.style.display = text.includes(q) ? '' : 'none';
+        });
+      });
+    </script>
+  </body>
+</html>
